@@ -1,3 +1,7 @@
 export default function Play() {
-  return <div>Play</div>;
+  return (
+    <div>
+      <input type="text" />
+    </div>
+  );
 }
