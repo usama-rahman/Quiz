@@ -1,5 +1,6 @@
 import { useState } from "react";
-import questions from "./Questions";
+// import questions from "./Questions";
+import questions from "./Question-V1";
 
 export default function Play() {
   const [currentQuestion, setcurrentQuestion] = useState(0);
@@ -30,16 +31,14 @@ export default function Play() {
             {questions[currentQuestion].question}
           </span>
         </h3>
-        {questions[currentQuestion].options.map((answerOption) => (
-          // eslint-disable-next-line react/jsx-key
-          <button
-            // onClick={alert("clicked")}
-
-            className="my-2 w-full hover:bg-yellow-800 "
-          >
-            {answerOption}
-          </button>
-        ))}
+        {questions[currentQuestion].answerOptions.answerText.map(
+          (answerOption) => (
+            // eslint-disable-next-line react/jsx-key
+            <button className="my-2 w-full hover:bg-yellow-800 ">
+              {answerOption}
+            </button>
+          )
+        )}
       </div>
 
       <div className="flex justify-between mt-8">
