@@ -54,6 +54,20 @@ function reducer(state, action) {
         highscore:
           state.points > state.highscore ? state.points : state.highscore,
       };
+    case "restart":
+      // return {
+      //   ...initialState,
+      //   question: state.questions,
+      //   status: "ready",
+      // };
+      return {
+        ...state,
+        points: 0,
+        status: "ready",
+        index: 0,
+        answer: null,
+        highscore: 0,
+      };
     default:
       throw new Error("Api Error");
   }
@@ -125,6 +139,7 @@ function App() {
             maxPossiblePoints={maxPossiblePoints}
             highscore={highscore}
             points={points}
+            dispatch={dispatch}
           />
         )}
       </Main>
