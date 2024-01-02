@@ -47,7 +47,7 @@ function reducer(state, action) {
         answer: null,
       };
     default:
-      throw new Error("");
+      throw new Error("Api Error");
   }
 }
 
@@ -63,12 +63,25 @@ function App() {
     0
   );
 
+  // LocalHost Question API
+
   useEffect(function () {
     fetch("http://localhost:8000/questions")
       .then((res) => res.json())
       .then((data) => dispatch({ type: "dataRecevied", payload: data }))
       .catch((err) => dispatch({ type: "error" }));
   }, []);
+
+  // Created Question API
+
+  // useEffect(() => {
+  //   async function fetchData() {
+  //     const res = await fetch("https://question-ruddy.vercel.app/");
+  //     const data = await res.json();
+  //     console.log(data);
+  //   }
+  //   fetchData();
+  // }, []);
 
   return (
     <div className="app">
