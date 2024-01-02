@@ -9,8 +9,7 @@ function StartScreen({ numQuestions, dispatch }) {
           dispatch({ type: "start" });
         }}
       >
-        {" "}
-        Let's Start{" "}
+        Let's Start
       </button>
     </div>
   );
