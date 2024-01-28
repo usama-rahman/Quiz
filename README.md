@@ -15,6 +15,6 @@ npm run server
 
 ```
 
-(!Landing Page)[https://prnt.sc/r4VskN4DfhrR]
+(!Landing Page)[./public/image/Screenshort_1.png]
 (!Start Quiz)[https://prnt.sc/sbVAD4sgZykV]
 (!Quiz)[https://prnt.sc/BpErM7cQ-oRw]
