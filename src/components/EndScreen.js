@@ -1,9 +1,10 @@
-export default function EndScreen({
-  points,
-  maxPossiblePoints,
-  dispatch,
-  highscore,
-}) {
+import { useContext } from "react";
+import { quizContext } from "../context";
+
+export default function EndScreen() {
+  const { points, maxPossiblePoints, dispatch, highscore } =
+    useContext(quizContext);
+
   const percentage = (points / maxPossiblePoints) * 100;
 
   let emoji;

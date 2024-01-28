@@ -10,6 +10,8 @@ import Progress from "./components/Progress";
 import EndScreen from "./components/EndScreen";
 import Timer from "./components/Timer";
 
+import { quizContext } from "./context";
+
 const secondsPerQuestion = 30;
 
 const initialState = {
@@ -63,11 +65,6 @@ function reducer(state, action) {
           state.points > state.highscore ? state.points : state.highscore,
       };
     case "restart":
-      // return {
-      //   ...initialState,
-      //   question: state.questions,
-      //   status: "ready",
-      // };
       return {
         ...state,
         points: 0,
@@ -109,61 +106,39 @@ function App() {
       .catch((err) => dispatch({ type: "error" }));
   }, []);
 
-  // Created Question API {"status" : "Not Working"}
-
-  // useEffect(() => {
-  //   async function fetchData() {
-  //     const res = await fetch("https://question-ruddy.vercel.app/");
-  //     const data = await res.json();
-  //     console.log(data);
-  //   }
-  //   fetchData();
-  // }, []);
-
   return (
-    <div className="app">
-      <Header />
-      <Main>
-        {status === "loading" && <Loader />}
-        {status === "error" && <Error />}
-        {status === "ready" && (
-          <StartScreen numQuestions={numQuestions} dispatch={dispatch} />
-        )}
-        {status === "active" && (
-          <>
-            <Progress
-              index={index}
-              numQuestions={numQuestions}
-              points={points}
-              maxPossiblePoints={maxPossiblePoints}
-              answer={answer}
-            />
-            <Question
-              question={questions[index]}
-              dispatch={dispatch}
-              answer={answer}
-            />
+    <quizContext.Provider
+      value={{
+        index,
+        numQuestions,
+        maxPossiblePoints,
+        answer,
+        points,
+        dispatch,
+        secondsRemaining,
+        highscore,
+      }}
+    >
+      <div className="app">
+        <Header />
+        <Main>
+          {status === "loading" && <Loader />}
+          {status === "error" && <Error />}
+          {status === "ready" && <StartScreen />}
+          {status === "active" && (
             <>
-              <Timer dispatch={dispatch} secondsRemaining={secondsRemaining} />
-              <NextButton
-                dispatch={dispatch}
-                numQuestions={numQuestions}
-                answer={answer}
-                index={index}
-              />
+              <Progress />
+              <Question question={questions[index]} />
+              <>
+                <Timer />
+                <NextButton />
+              </>
             </>
-          </>
-        )}
-        {status === "finish" && (
-          <EndScreen
-            maxPossiblePoints={maxPossiblePoints}
-            highscore={highscore}
-            points={points}
-            dispatch={dispatch}
-          />
-        )}
-      </Main>
-    </div>
+          )}
+          {status === "finish" && <EndScreen />}
+        </Main>
+      </div>
+    </quizContext.Provider>
   );
 }
 
