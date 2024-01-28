@@ -2,7 +2,7 @@
 
 ## useReducer && Context API Project
 
-- Run The Projects
+- Run The Project
 
 ```bash
 npm i
@@ -15,7 +15,7 @@ npm run server
 
 ```
 
-[!Landing Page](./public/image/Screenshort_1.png)
-<img title="a title" alt="Alt text" src="./public/image/Screenshort_1.png">
-(!Start Quiz)[https://prnt.sc/sbVAD4sgZykV]
-(!Quiz)[https://prnt.sc/BpErM7cQ-oRw]
+![Landing Page](./public/image/Screenshot_1.png)
+![Start Quiz](./public/image/Screenshot_2.png)
+![Quiz](./public/image/Screenshot_3.png)
+![End Screen](./public/image/Screenshot_4.png)
